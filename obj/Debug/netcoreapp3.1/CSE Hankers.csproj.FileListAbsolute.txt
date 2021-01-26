@@ -1,0 +1,163 @@
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\CSE Hankers.exe
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\CSE Hankers.deps.json
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\CSE Hankers.runtimeconfig.json
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\CSE Hankers.runtimeconfig.dev.json
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\CSE Hankers.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\CSE Hankers.pdb
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\CSE Hankers.Views.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\CSE Hankers.Views.pdb
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.csprojAssemblyReference.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.AssemblyInfoInputs.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.AssemblyInfo.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.RazorAssemblyInfo.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.RazorAssemblyInfo.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.TagHelpers.input.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.TagHelpers.output.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.RazorCoreGenerate.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.RazorTargetAssemblyInfo.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.RazorTargetAssemblyInfo.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.Views.pdb
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\staticwebassets\CSE Hankers.StaticWebAssets.Manifest.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\staticwebassets\CSE Hankers.StaticWebAssets.xml
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.pdb
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.genruntimeconfig.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.csproj.CopyComplete
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Humanizer.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.csproj.CoreCompileInputs.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.MvcApplicationPartsAssemblyInfo.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Shared\404.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AccessDenied.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Answer\Create.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Answer\Details.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
