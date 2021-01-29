@@ -1,0 +1,52 @@
+﻿@model CSE_Hankers.Models.ViewModels.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div class="card shadow p-2 mb-2 mt-2 bg-white rounded">
+                    <div class="text-center bg-white pt-2 pb-2" style="font-size: 2em;">
+                        Login
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Login">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <input type="hidden" asp-for="role" class="form-control" value="@ViewBag.role" />
+                                <span asp-validation-for="role" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="email" class="control-label"></label>
+                                <input asp-for="email" class="form-control text-lowercase">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="password" class="control-label d-flex flex-row align-items-center">
+                                    <label asp-for="password" class="control-label"></label>
+                                    <a class="ml-auto border-link small-xl" asp-action="ForgotPassword">Forget Password?</a>
+                                </label>
+                                <input asp-for="password" class="form-control">
+                            </div>
+                            <div class="form-group form-check mt-4 mb-4">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="rememberMe" /> @Html.DisplayNameFor(model => model.rememberMe)
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                            </div>
+                        </form>
+                        <p class="small-xl pt-3 text-center">
+                            <span class="text-muted">Not a member?</span>
+                            <a asp-action="Register">Sign up</a><br />
+                            <a asp-controller="Home" asp-action="Index">Back to Home Page</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

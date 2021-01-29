@@ -1,0 +1,44 @@
+﻿@model CSE_Hankers.Models.ViewModels.ViewUser
+
+@{
+    ViewData["Title"] = "Profile";
+    var photoPath = "~/Images/Profiles/" + Model.photoPath;
+}
+
+<h1>Profile</h1>
+
+<div>
+    <h4>ViewUser</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.mobile)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.mobile)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.organization)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.organization)
+        </dd>
+    </dl>
+    <img class="img-thumbnail" src="@photoPath" asp-append-version="true" />
+</div>
+<div>
+    <a asp-action="UpdateProfile">Update</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
