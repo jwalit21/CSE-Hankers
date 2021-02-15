@@ -55,7 +55,10 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ReportedContents">Reported Contents</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                <form asp-action="Logout" asp-controller="Account" method="post">
+                                    <button type="submit" class="nav-link text-dark">Update</button>
+@*                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout"></a>*@
+                                </form>
                             </li>
                         }
                         else
@@ -87,7 +90,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">Profile</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                    <form asp-action="Logout" asp-controller="Account" method="post">
+                                        <button type="submit" class="btn-link nav-link text-dark">Logout</button>
+                                        @*                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout"></a>*@
+                                    </form>
                                 </div>
                             </li>
                         }

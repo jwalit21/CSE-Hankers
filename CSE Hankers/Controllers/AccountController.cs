@@ -55,8 +55,10 @@ namespace CSE_Hankers.Controllers
                 }
 
                 //copy data from registerviewmodel to identityuser
+                //var maxUserId = userManager.Users.Max(usr => usr.userId);
                 var user = new ApplicationUser
                 {
+                    userId = 0,
                     name = registerUser.name,
                     UserName = registerUser.email,
                     Email = registerUser.email,
@@ -135,14 +137,6 @@ namespace CSE_Hankers.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Logout()
-        {
-            await signInManager.SignOutAsync();
-
-            TempData["SuccessMessage"] = "Logged out Successfully!";
-            return RedirectToAction("Index", "Home");
-        }
-
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Profile()
@@ -150,6 +144,7 @@ namespace CSE_Hankers.Controllers
             ApplicationUser user = await userManager.GetUserAsync(User);
             ViewUser viewUser = new ViewUser()
             {
+                id = user.userId,
                 name = user.name,
                 email = user.Email,
                 mobile = user.mobile,
@@ -166,6 +161,7 @@ namespace CSE_Hankers.Controllers
             ApplicationUser user = await userManager.GetUserAsync(User);
             UpdateUser updateUser = new UpdateUser()
             {
+                id = user.userId,
                 email = user.Email,
                 name = user.name,
                 mobile = user.mobile,
@@ -182,6 +178,7 @@ namespace CSE_Hankers.Controllers
             ApplicationUser user = await userManager.FindByEmailAsync(updateUser.email);
             if (user == null)
                 return RedirectToAction("Profile");
+
             if(ModelState.IsValid)
             {
                 user.mobile = updateUser.mobile;
@@ -193,20 +190,32 @@ namespace CSE_Hankers.Controllers
                     {
                         string filePath = Path.Combine(hostingEnvironment.WebRootPath, "Images", "Profiles", updateUser.existingPhotoPath);
                         System.IO.File.Delete(filePath);
-
-                        string uniqueFileName = "";
-                        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "Images", "Profiles");
-                        uniqueFileName = Guid.NewGuid().ToString() + "_" + updateUser.photoPath.FileName;
-                        string newfilePath = Path.Combine(uploadsFolder, uniqueFileName);
-                        updateUser.photoPath.CopyTo(new FileStream(newfilePath, FileMode.Create));
-
-                        user.photoPath = uniqueFileName;
                     }
+                    string uniqueFileName = "";
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "Images", "Profiles");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + updateUser.photoPath.FileName;
+                    string newfilePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    updateUser.photoPath.CopyTo(new FileStream(newfilePath, FileMode.Create));
+
+                    user.photoPath = uniqueFileName;
                 }
+                var  updatedUser = context.Users.Attach(user);
+                updatedUser.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                context.SaveChanges();
+                //To update user
+                return RedirectToAction("Profile");
             }
 
-            //To update user
-            return RedirectToAction("Profile");
+            return View(updateUser);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+
+            TempData["SuccessMessage"] = "Logged out Successfully!";
+            return RedirectToAction("Login", "Account");
         }
     }
 }

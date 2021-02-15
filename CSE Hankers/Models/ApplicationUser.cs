@@ -9,6 +9,7 @@ namespace CSE_Hankers.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public int userId { get; set; }
         public string name { get; set; }
         public string mobile { get; set; }
         public string organization { get; set; }
