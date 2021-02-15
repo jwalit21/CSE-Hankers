@@ -7,8 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Answer\" />
-    <Folder Include="Views\Article\" />
-    <Folder Include="Views\ArticleComment\" />
     <Folder Include="Views\Question\" />
     <Folder Include="wwwroot\Images\Profiles\" />
   </ItemGroup>

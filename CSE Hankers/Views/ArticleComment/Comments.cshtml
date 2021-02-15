@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CSE_Hankers.Models.ArticleComment>
+
+@{
+    ViewData["Title"] = "Comments";
+    var id = ViewBag.id;
+    ViewBag.id = id;
+    var user = ViewBag.user;
+}
+
+<div class="container" style=" background-color: #e1e1e1;">
+    <p>
+        <a asp-action="Create" asp-route-id="@id">Add Comment</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.comment)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.author == user)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.comment)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.articleCommentId">Edit</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>

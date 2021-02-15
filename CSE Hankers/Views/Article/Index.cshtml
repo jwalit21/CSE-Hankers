@@ -1,0 +1,51 @@
+﻿@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+
+@model IEnumerable<CSE_Hankers.Models.Article>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row container" style=" background-color: #e1e1e1;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.likes)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.likes)
+                    </td>
+                    <td>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <a asp-action="Comments" asp-controller="ArticleComment" asp-route-id="@item.articleId">Comments</a>
+                        }
+                        <a asp-action="Details" asp-route-id="@item.articleId">Details</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

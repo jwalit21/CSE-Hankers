@@ -322,3 +322,13 @@ D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hanker
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.pdb
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.genruntimeconfig.cache
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Account\UpdateProfile.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Article\Create.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Article\Index.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Article\ArticleDetails.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Article\MyArticles.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Article\Details.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Article\Edit.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\Article\Delete.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\ArticleComment\Comments.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\ArticleComment\Edit.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\ArticleComment\Create.cshtml.g.cs

@@ -1,0 +1,33 @@
+﻿@model CSE_Hankers.Models.ArticleComment
+
+@{
+    ViewData["Title"] = "Create";
+    var id = ViewBag.id;
+    ViewBag.id = id;
+}
+
+
+<div class="container row" style=" background-color: #e1e1e1;">
+    <h4>ArticleComment</h4>
+    <hr />
+    <div class="col-md-4">
+        <form asp-action="Create">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="likes" value="@id" />
+            <div class="form-group">
+                <label asp-for="comment" class="control-label"></label>
+                <input asp-for="comment" class="form-control" />
+                <span asp-validation-for="comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Post" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container" style=" background-color: #e1e1e1;">
+    <a asp-action="Comments" asp-route-id="@id">Back to List</a>
+</div>
+

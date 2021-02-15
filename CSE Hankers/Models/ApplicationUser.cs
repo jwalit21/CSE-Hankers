@@ -20,5 +20,7 @@ namespace CSE_Hankers.Models
         public ICollection<Article> articles { get; set; }
         public ICollection<ArticleComment> articleComments { get; set; }
 
+        public ICollection<ArticleLikes> articleLikes { get; set; }
+
     }
 }

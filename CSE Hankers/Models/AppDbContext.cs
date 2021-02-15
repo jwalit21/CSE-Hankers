@@ -25,5 +25,6 @@ namespace CSE_Hankers.Models
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleComment> ArticleComments { get; set; }
+        public DbSet<ArticleLikes> ArticleLikes { get; set; }
     }
 }

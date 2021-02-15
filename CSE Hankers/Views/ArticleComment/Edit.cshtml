@@ -1,0 +1,30 @@
+﻿@model CSE_Hankers.Models.ArticleComment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="container row" style=" background-color: #e1e1e1;">
+    <h4>ArticleComment</h4>
+    <hr />
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="articleCommentId" />
+            <div class="form-group">
+                <label asp-for="comment" class="control-label"></label>
+                <input asp-for="comment" class="form-control" />
+                <span asp-validation-for="comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

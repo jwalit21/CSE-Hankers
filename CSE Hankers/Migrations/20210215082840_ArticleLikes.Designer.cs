@@ -4,14 +4,16 @@ using CSE_Hankers.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CSE_Hankers.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210215082840_ArticleLikes")]
+    partial class ArticleLikes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,9 +163,6 @@ namespace CSE_Hankers.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("articleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("authorId")
                         .HasColumnType("nvarchar(450)");
 
@@ -176,8 +175,6 @@ namespace CSE_Hankers.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("articleCommentId");
-
-                    b.HasIndex("articleId");
 
                     b.HasIndex("authorId");
 
@@ -398,15 +395,9 @@ namespace CSE_Hankers.Migrations
 
             modelBuilder.Entity("CSE_Hankers.Models.ArticleComment", b =>
                 {
-                    b.HasOne("CSE_Hankers.Models.Article", "article")
-                        .WithMany("articleComments")
-                        .HasForeignKey("articleId");
-
                     b.HasOne("CSE_Hankers.Models.ApplicationUser", "author")
                         .WithMany("articleComments")
                         .HasForeignKey("authorId");
-
-                    b.Navigation("article");
 
                     b.Navigation("author");
                 });
@@ -501,8 +492,6 @@ namespace CSE_Hankers.Migrations
 
             modelBuilder.Entity("CSE_Hankers.Models.Article", b =>
                 {
-                    b.Navigation("articleComments");
-
                     b.Navigation("articleLikes");
                 });
 #pragma warning restore 612, 618

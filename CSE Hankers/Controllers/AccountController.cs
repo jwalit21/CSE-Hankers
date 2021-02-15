@@ -127,7 +127,7 @@ namespace CSE_Hankers.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("Dashboard", "User");
+                            return RedirectToAction("Index", "Home");
                         }
                     }
                 }

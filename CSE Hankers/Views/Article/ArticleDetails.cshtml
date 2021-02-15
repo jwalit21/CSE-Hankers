@@ -1,0 +1,37 @@
+﻿@model CSE_Hankers.Models.Article
+
+@{
+    ViewData["Title"] = "ArticleDetails";
+}
+
+<h1>ArticleDetails</h1>
+
+<div class="container" style=" background-color: #e1e1e1;">
+    <h4>Article</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.likes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.likes)
+        </dd>
+    </dl>
+</div>
+
+<div class="container" style=" background-color: #e1e1e1;">
+    <a asp-action="Edit" asp-route-id="@Model.articleId">Edit</a> |
+    <a asp-action="MyArticles">Back to List</a>
+</div>

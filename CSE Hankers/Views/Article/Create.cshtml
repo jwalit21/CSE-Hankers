@@ -1,0 +1,33 @@
+﻿@model CSE_Hankers.Models.Article
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Article</h4>
+<hr />
+<div class="container row" style=" background-color: #e1e1e1;">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label"></label>
+                <textarea asp-for="description" class="form-control"></textarea>
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Post" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container" style=" background-color: #e1e1e1;">
+    <a asp-action="Index">Back to List</a>
+</div>
+
