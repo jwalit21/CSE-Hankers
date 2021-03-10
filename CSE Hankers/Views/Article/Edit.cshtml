@@ -4,10 +4,39 @@
     ViewData["Title"] = "Edit";
 }
 
-<div class="row container" style=" background-color: #e1e1e1;">
 
-    <h4>Article</h4>
-    <hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto mt-4 mb-4">
+            <a asp-action="Index" class="btn btn-outline-light">Back to List</a><br />
+            <form asp-action="Edit" class="border-light mt-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="articleId" />
+                <input type="hidden" asp-for="likes" />
+                <div class="form-group">
+                    <label asp-for="title" class="control-label text-white"></label>
+                    <input asp-for="title" class="form-control" />
+                    <span asp-validation-for="title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="description" class="control-label text-white"></label>
+                    <div style=" background-color: #e1e1e1;">
+                        <textarea id="MDDescription" rows="20" cols="60"
+                                  name="MDDescription" class="form-control">@Markdown.ParseHtmlString(Model.description)</textarea>
+                        <span asp-validation-for="description" class="text-danger"></span>
+                    </div>
+                </div>
+                <input asp-for="description" id="description" type="hidden" />
+                <div class="form-group">
+                    <input type="submit" value="Save" id="submitBtn" class="btn btn-primary w-25" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="row container" style=" background-color: #e1e1e1;">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -34,7 +63,7 @@
 
 <div class="row container" style=" background-color: #e1e1e1;">
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
 
 
 @section Scripts {

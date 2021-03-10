@@ -56,7 +56,7 @@ namespace CSE_Hankers.Controllers
                 article.author = await userManager.FindByIdAsync(article.authorId);
             }
             var user = getLoggedUser();
-            int pageSize = 8;
+            int pageSize = 5;
 
             return View(PaginatedList<Article>.CreateAsync(articles, pageNumber ?? 1, pageSize));
         }
@@ -70,7 +70,7 @@ namespace CSE_Hankers.Controllers
             {
                 article.author = await userManager.FindByIdAsync(article.authorId);
             }
-            int pageSize = 8;
+            int pageSize = 5;
             return View(PaginatedList<Article>.CreateAsync(articles, pageNumber ?? 1, pageSize));
         }
 
@@ -125,23 +125,6 @@ namespace CSE_Hankers.Controllers
             return RedirectToAction("Index", "Article");
         }
 
- /*       [HttpGet]
-        [Authorize]
-        public IActionResult Delete(int id)
-        {
-            Article article = articleRepository.GetArticle(id);
-
-            if (article == null)
-            {
-                TempData["ErrorMessage"] = "Article not found!";
-                return RedirectToAction("Index", "Article");
-            }
-
-            var user = getLoggedUser();
-            if (article.author != user)
-                return RedirectToAction("AccessDenied", "Account");
-            return View(article);
-        }*/
 
         [HttpPost]
         [Authorize]
