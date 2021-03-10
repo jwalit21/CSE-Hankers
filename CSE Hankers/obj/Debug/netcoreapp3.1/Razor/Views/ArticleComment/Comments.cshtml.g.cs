@@ -40,8 +40,15 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\Views\_ViewImports.cshtml"
+using Westwind.AspNetCore.Markdown;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7bd0907008bfecb2b49a2ea364ad11342ab44f1d", @"/Views/ArticleComment/Comments.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9bd5ccdd2fbaee262a7c75d1347bc0d5cdc27bcd", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f62f35163c3bc281d78073cbe7870288156ffb62", @"/Views/_ViewImports.cshtml")]
     public class Views_ArticleComment_Comments : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<CSE_Hankers.Models.ArticleComment>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -83,7 +90,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"container\" style=\" background-color: #e1e1e1;\">\r\n    <p>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7bd0907008bfecb2b49a2ea364ad11342ab44f1d4526", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7bd0907008bfecb2b49a2ea364ad11342ab44f1d4715", async() => {
                 WriteLiteral("Add Comment");
             }
             );
@@ -148,7 +155,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                        </td>\r\n                        <td>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7bd0907008bfecb2b49a2ea364ad11342ab44f1d8130", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7bd0907008bfecb2b49a2ea364ad11342ab44f1d8319", async() => {
                 WriteLiteral("Edit");
             }
             );

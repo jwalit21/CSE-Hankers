@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CSE_Hankers.Models;
+using CSE_Hankers.Models.IRepositories;
+using Markdig.Syntax;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Westwind.AspNetCore.Markdown;
 
 namespace CSE_Hankers.Controllers
 {
@@ -15,8 +20,12 @@ namespace CSE_Hankers.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly AppDbContext context;
+        private readonly IArticleRepository articleRepository;
+        private readonly IArticleCommentRepository articleCommentRepository;
 
         public ArticleController(
+            IArticleRepository articleRepository,
+            IArticleCommentRepository articleCommentRepository,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
@@ -26,20 +35,43 @@ namespace CSE_Hankers.Controllers
             this.roleManager = roleManager;
             this.userManager = userManager;
             this.signInManager = signInManager;
-        }
-        public IActionResult Index()
-        {
-            return View(context.Articles);
+            this.articleRepository = articleRepository;
+            this.articleCommentRepository = articleCommentRepository;
         }
 
-        [Authorize]
-        public IActionResult MyArticles()
+        public ApplicationUser getLoggedUser()
         {
             var userid = signInManager.UserManager.GetUserId(User);
             var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
+            return user;
+        }
 
-            var articles = context.Articles.Where(a => a.author == user);
-            return View(articles);
+        [Authorize]
+        public async Task<IActionResult> Index(
+                int? pageNumber)
+        {
+            IList<Article> articles = articleRepository.GetAllArticles();
+            foreach (var article in articles)
+            {
+                article.author = await userManager.FindByIdAsync(article.authorId);
+            }
+            var user = getLoggedUser();
+            int pageSize = 8;
+
+            return View(PaginatedList<Article>.CreateAsync(articles, pageNumber ?? 1, pageSize));
+        }
+
+        [Authorize]
+        public async Task<IActionResult> MyArticles(int? pageNumber)
+        {
+            var user = getLoggedUser();
+            var articles = context.Articles.Where(a => a.author == user).ToList();
+            foreach (var article in articles)
+            {
+                article.author = await userManager.FindByIdAsync(article.authorId);
+            }
+            int pageSize = 8;
+            return View(PaginatedList<Article>.CreateAsync(articles, pageNumber ?? 1, pageSize));
         }
 
         [HttpGet]
@@ -53,11 +85,9 @@ namespace CSE_Hankers.Controllers
         {
             if(ModelState.IsValid)
             {
-                var userid = signInManager.UserManager.GetUserId(User);
-                var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
+                var user = getLoggedUser();
                 article.author = user;
-                context.Articles.Add(article);
-                context.SaveChanges();
+                articleRepository.Add(article);
                 TempData["SuccessMessage"] = "Article Published Successfully!";
                 return RedirectToAction("MyArticles");
             }
@@ -68,7 +98,7 @@ namespace CSE_Hankers.Controllers
         [Authorize]
         public IActionResult Edit(int id)
         {
-            Article article = context.Articles.FirstOrDefault(m => m.articleId == id);
+            Article article = articleRepository.GetArticle(id);
             if (article == null)
             {
                 TempData["ErrorMessage"] = "Article not found!";
@@ -76,8 +106,7 @@ namespace CSE_Hankers.Controllers
             }
             else
             {
-                var userid = signInManager.UserManager.GetUserId(User);
-                var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
+                var user = getLoggedUser();
                 if (article.author != user)
                     return RedirectToAction("AccessDenied", "Account");
                 return View(article);
@@ -88,19 +117,19 @@ namespace CSE_Hankers.Controllers
         [Authorize]
         public IActionResult Edit(Article article)
         {
-            var changedArticle = context.Articles.Attach(article);
-            changedArticle.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
-
+            Article updatedArticle = articleRepository.GetArticle(article.articleId);
+            updatedArticle.description = article.description;
+            updatedArticle.title = article.title;
+            articleRepository.Update(updatedArticle);
             TempData["SuccessMessage"] = "Article Updated Successfully!";
             return RedirectToAction("Index", "Article");
         }
 
-        [HttpGet]
+ /*       [HttpGet]
         [Authorize]
         public IActionResult Delete(int id)
         {
-            Article article = context.Articles.FirstOrDefault(m => m.articleId == id);
+            Article article = articleRepository.GetArticle(id);
 
             if (article == null)
             {
@@ -108,35 +137,26 @@ namespace CSE_Hankers.Controllers
                 return RedirectToAction("Index", "Article");
             }
 
-            var userid = signInManager.UserManager.GetUserId(User);
-            var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
+            var user = getLoggedUser();
             if (article.author != user)
                 return RedirectToAction("AccessDenied", "Account");
             return View(article);
-        }
+        }*/
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [Authorize]
         public IActionResult DeleteConfirmed(int id)
         {
-            Article article = context.Articles.FirstOrDefault(m => m.articleId == id);
+            Article article = articleRepository.GetArticle(id);
             if (article == null)
             {
                 TempData["ErrorMessage"] = "Article not found!";
                 return RedirectToAction("Index", "Article");
             }
 
-            var articleLikes = context.ArticleLikes.Where(u => u.article == article);
-            context.ArticleLikes.RemoveRange(articleLikes);
-            context.SaveChanges();
-
-            var articleComments = context.ArticleComments.Where(o => o.article == article);
-            context.ArticleComments.RemoveRange(articleComments);
-            context.SaveChanges();
-
-            context.Articles.Remove(article);
-            context.SaveChanges();
-
+            articleRepository.RemoveArticleLikes(article);
+            articleCommentRepository.RemoveCommentsOfArticle(article);
+            articleRepository.Delete(article);
 
             TempData["SuccessMessage"] = "Article Deleted Successfully!";
             return RedirectToAction("Index", "Article");
@@ -144,11 +164,10 @@ namespace CSE_Hankers.Controllers
 
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            Article article = context.Articles.FirstOrDefault(m => m.articleId == id);
-            var userid = signInManager.UserManager.GetUserId(User);
-            var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
+            Article article = articleRepository.GetArticle(id);
+            var user = getLoggedUser();
 
             if (article == null)
             {
@@ -164,6 +183,7 @@ namespace CSE_Hankers.Controllers
                         return View("ArticleDetails", article);
                     }
                 }
+                ViewBag.author = await userManager.FindByIdAsync(article.authorId);
                 return View(article);
             }
         }
@@ -173,9 +193,8 @@ namespace CSE_Hankers.Controllers
         [Authorize]
         public IActionResult Like(int id)
         {
-            Article article = context.Articles.FirstOrDefault(m => m.articleId == id);
-            var userid = signInManager.UserManager.GetUserId(User);
-            var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
+            Article article = articleRepository.GetArticle(id);
+            var user = getLoggedUser();
 
             if (article == null)
             {
@@ -187,19 +206,10 @@ namespace CSE_Hankers.Controllers
                 var obj = (context.ArticleLikes.Where(al => (al.article == article && al.author==user)));
                 if(obj.Count() == 0)
                 {
-                    var alObject = new ArticleLikes()
-                    {
-                        article = article,
-                        author = user,
-                    };
-                    context.ArticleLikes.Add(alObject);
-                    context.SaveChanges();
-
+                    var alObject = articleRepository.giveLike(article, user);
 
                     article.likes = article.likes + 1;
-                    var changedArticle = context.Articles.Attach(article);
-                    changedArticle.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    context.SaveChanges();
+                    articleRepository.Update(article);
                     TempData["SuccessMessage"] = "Article liked!";
                     return RedirectToAction("Details", "Article");
                 }

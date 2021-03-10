@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CSE_Hankers.Models;
+using CSE_Hankers.Models.IRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,8 +17,12 @@ namespace CSE_Hankers.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly AppDbContext context;
+        private readonly IArticleRepository articleRepository;
+        private readonly IArticleCommentRepository articleCommentRepository;
 
         public ArticleCommentController(
+            IArticleCommentRepository articleCommentRepository,
+            IArticleRepository articleRepository,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
@@ -27,21 +32,29 @@ namespace CSE_Hankers.Controllers
             this.roleManager = roleManager;
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.articleRepository = articleRepository;
+            this.articleCommentRepository = articleCommentRepository;
+        }
+
+        public ApplicationUser getLoggedUser()
+        {
+            var userid = signInManager.UserManager.GetUserId(User);
+            var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
+            return user;
         }
 
         [HttpGet]
         public IActionResult Comments(int id)
         {
-            Article article = context.Articles.FirstOrDefault(m => m.articleId == id);
+            Article article = articleRepository.GetArticle(id);
             if (article == null)
             {
                 TempData["ErrorMessage"] = "Article not found!";
                 return View("404");
             }
 
-            var userid = signInManager.UserManager.GetUserId(User);
-            var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
-            var comments = context.ArticleComments.Where(l => l.author==user).Where(p => p.article.articleId==id);
+            var user = getLoggedUser();
+            var comments = articleCommentRepository.GetComments(article);
             ViewBag.id = id;
             ViewBag.user = user;
             return View(comments);
@@ -51,7 +64,7 @@ namespace CSE_Hankers.Controllers
         [Authorize]
         public IActionResult Create(int id)
         {
-            Article article = context.Articles.FirstOrDefault(m => m.articleId == id);
+            Article article = articleRepository.GetArticle(id);
             if (article == null)
             {
                 TempData["ErrorMessage"] = "Article not found!";
@@ -66,23 +79,18 @@ namespace CSE_Hankers.Controllers
         {
             if (ModelState.IsValid)
             {
-                int articleId = articleComment.likes;
-                articleComment.likes = 0;
-                var userid = signInManager.UserManager.GetUserId(User);
-                var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
-                articleComment.author = user;
+                int articleId = articleComment.likes; // likes gives us the articleId coming from the View
+                var user = getLoggedUser();
 
-                
-                Article article = context.Articles.FirstOrDefault(m => m.articleId == articleId);
+                Article article = articleRepository.GetArticle(articleId);
                 if (article == null)
                 {
                     TempData["ErrorMessage"] = "Article not found!";
                     return View("404");
                 }
- 
-                articleComment.article = article;
-                context.ArticleComments.Add(articleComment);
-                context.SaveChanges();
+
+                articleComment.author = user; articleComment.likes = 0; articleComment.article = article;
+                articleCommentRepository.AddComment(articleComment);
                 TempData["SuccessMessage"] = "comment added Successfully!";
                 return RedirectToAction("Comments","ArticleComment",articleId);
             }
@@ -93,7 +101,7 @@ namespace CSE_Hankers.Controllers
         [Authorize]
         public IActionResult Edit(int id)
         {
-            ArticleComment articleComment = context.ArticleComments.FirstOrDefault(m => m.articleCommentId == id);
+            ArticleComment articleComment = articleCommentRepository.GetArticleComment(id);
             if (articleComment == null)
             {
                 TempData["ErrorMessage"] = "Comment not found!";
@@ -101,8 +109,7 @@ namespace CSE_Hankers.Controllers
             }
             else
             {
-                var userid = signInManager.UserManager.GetUserId(User);
-                var user = context.Users.Where(usr => usr.Id == userid).FirstOrDefault();
+                var user = getLoggedUser();
                 if (articleComment.author != user)
                     return View("AccessDenied");
                 return View(articleComment);
@@ -113,13 +120,9 @@ namespace CSE_Hankers.Controllers
         [Authorize]
         public IActionResult Edit(ArticleComment articleComment)
         {
-            
-            var changedArticleComment = context.ArticleComments.Attach(articleComment);
-            changedArticleComment.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
-
+            articleCommentRepository.Update(articleComment);
             TempData["SuccessMessage"] = "Comment Updated Successfully!";
-            var obj = context.ArticleComments.FirstOrDefault(o => o.articleCommentId == articleComment.articleCommentId);
+            var obj = articleCommentRepository.GetArticleComment(articleComment.articleCommentId);
             return RedirectToAction("Comments", "ArticleComment",obj.article.articleId);
         }
 

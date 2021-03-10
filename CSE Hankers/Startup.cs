@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CSE_Hankers.Models;
+using CSE_Hankers.Models.IRepositories;
+using CSE_Hankers.Models.SQLRepositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +41,10 @@ namespace CSE_Hankers
 
             services.Configure<DataProtectionTokenProviderOptions>(opt =>
                                 opt.TokenLifespan = TimeSpan.FromHours(2));
+
+            services.AddScoped<IUserRepository, SQLUserRepository>();
+            services.AddScoped<IArticleRepository, SQLArticleRepository>();
+            services.AddScoped<IArticleCommentRepository, SQLArticleCommentRepository>();
         }
 
         //For creating roles

@@ -4,30 +4,53 @@
     ViewData["Title"] = "Create";
 }
 
-<h4>Article</h4>
-<hr />
-<div class="container row" style=" background-color: #e1e1e1;">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="title" class="control-label"></label>
-                <input asp-for="title" class="form-control" />
-                <span asp-validation-for="title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="description" class="control-label"></label>
-                <textarea asp-for="description" class="form-control"></textarea>
-                <span asp-validation-for="description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Post" class="btn btn-primary" />
-            </div>
-        </form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto mt-4 mb-4">
+            <a asp-action="Index" class="btn btn-outline-light">Back to List</a><br />
+            <form asp-action="Create" class="border-light mt-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="title" class="control-label text-white"></label>
+                    <input asp-for="title" class="form-control" />
+                    <span asp-validation-for="title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="description" class="control-label text-white"></label>
+                    <div  style=" background-color: #e1e1e1;">
+                        <textarea id="MDDescription" type="text" rows="20" cols="60"
+                                  name="MDDescription" value="" class="form-control"></textarea>
+                        <span asp-validation-for="description" class="text-danger"></span>
+                    </div>
+                </div>
+                <input asp-for="description" id="description" type="hidden" />
+                <div class="form-group">
+                    <input type="submit" value="Post" id="submitBtn" class="btn btn-primary w-25" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div class="container" style=" background-color: #e1e1e1;">
-    <a asp-action="Index">Back to List</a>
-</div>
+@section Scripts {
+    <script type="text/javascript">
+        // initialization of markdown editor with the custom toolbar
+        let simpleMDE = new SimpleMDE({
+            element: document.getElementById("MDDescription"),
+            toolbar: ["bold", "italic", "heading", "preview"],
+        });
 
+        //passing data to the hidden field in the form
+@*        function validate() {
+            console.log(simpleMDE.value());
+            document.getElementById("description").value = simpleMDE.value();
+        }*@
+
+        $("#submitBtn").click(function validate() {
+            console.log(simpleMDE.value());
+            document.getElementById("description").value = simpleMDE.value();
+        });
+
+    </script>
+}

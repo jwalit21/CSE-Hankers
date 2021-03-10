@@ -289,11 +289,8 @@ D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\w
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.csprojAssemblyReference.cache
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.AssemblyInfoInputs.cache
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.AssemblyInfo.cs
-D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.csproj.CoreCompileInputs.cache
-D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.MvcApplicationPartsAssemblyInfo.cache
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.RazorAssemblyInfo.cache
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.RazorAssemblyInfo.cs
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.TagHelpers.input.cache
@@ -332,3 +329,11 @@ D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\View
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\ArticleComment\Comments.cshtml.g.cs
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\ArticleComment\Edit.cshtml.g.cs
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\ArticleComment\Create.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\bin\Debug\netcoreapp3.1\libman.json
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\bin\Debug\netcoreapp3.1\Markdig.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\bin\Debug\netcoreapp3.1\Westwind.AspNetCore.Markdown.dll
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.csproj.CoreCompileInputs.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.MvcApplicationPartsAssemblyInfo.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.MvcApplicationPartsAssemblyInfo.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.csprojAssemblyReference.cache

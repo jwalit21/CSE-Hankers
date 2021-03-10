@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CSE_Hankers.Models;
+using CSE_Hankers.Models.IRepositories;
 using CSE_Hankers.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -19,13 +20,16 @@ namespace CSE_Hankers.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly AppDbContext context;
+        private readonly IUserRepository userRepository;
 
         public AccountController(IHostingEnvironment hostingEnvironment,
             AppDbContext context,
+            IUserRepository userRepository,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager)
         {
+            this.userRepository = userRepository;
             this.hostingEnvironment = hostingEnvironment;
             this.roleManager = roleManager;
             this.context = context;
@@ -139,9 +143,18 @@ namespace CSE_Hankers.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Profile()
+        public async Task<IActionResult> Profile(string? username)
         {
             ApplicationUser user = await userManager.GetUserAsync(User);
+            bool isOwnProfile = true; 
+            if (username!= null)
+            {
+                ApplicationUser applicationUser = userManager.Users.Where(u => u.UserName == username).FirstOrDefault();
+                if (applicationUser == null)
+                    return RedirectToAction("404", "Account");
+                user = applicationUser;
+                isOwnProfile = false;
+            }
             ViewUser viewUser = new ViewUser()
             {
                 id = user.userId,
@@ -151,6 +164,8 @@ namespace CSE_Hankers.Controllers
                 organization = user.organization,
                 photoPath = user.photoPath
             };
+
+            ViewBag.isOwnProfile = isOwnProfile;
             return View(viewUser);
         }
 
@@ -199,10 +214,8 @@ namespace CSE_Hankers.Controllers
 
                     user.photoPath = uniqueFileName;
                 }
-                var  updatedUser = context.Users.Attach(user);
-                updatedUser.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                context.SaveChanges();
-                //To update user
+
+                userRepository.Update(user);
                 return RedirectToAction("Profile");
             }
 
@@ -213,7 +226,6 @@ namespace CSE_Hankers.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-
             TempData["SuccessMessage"] = "Logged out Successfully!";
             return RedirectToAction("Login", "Account");
         }

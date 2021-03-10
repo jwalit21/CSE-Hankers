@@ -1,50 +1,113 @@
-﻿@model IEnumerable<CSE_Hankers.Models.Article>
+﻿@model PaginatedList<CSE_Hankers.Models.Article>
 
 @{
     ViewData["Title"] = "MyArticles";
 }
 
-<h1>MyArticles</h1>
-
-<div class="row container" style=" background-color: #e1e1e1;">
-    <p>
-        <a asp-action="Create">Create New</a>
+<div class="container mt-4 bt-4">
+    <p class="ml-3">
+        <a asp-action="Index" class="btn btn-outline-light">Back</a> | <a asp-action="Create" class="btn btn-primary">Publish New</a>
     </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.likes)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.likes)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.articleId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.articleId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.articleId">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+
+    <div class="container mt-2 mb-2 ">
+
+        @foreach (var item in Model)
+        {
+            <div class="row mt-2 mb-3">
+                <div class="col-md-12 col-sm-12">
+                    <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="text-dark">
+                        <div class="card rounded shadow" style="background-color: #e1e1e1;">
+                            <div class="card-header card-header-own">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h5 class="card-title pt-2">@item.title</h5>
+                                        <object><a asp-action="Profile" asp-controller="Account" asp-route-username="@item.author.UserName"><p class="text-muted text-right">- @item.author.name </p></a></object>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <object><a asp-action="Profile" asp-controller="Account" asp-route-username="@item.author.UserName"><img src="~/Images/Profiles/@item.author.photoPath" class="rounded-circle" style="height: 50px; width:50x; margin-bottom: -160px; margin-left:-110px;" /></a></object>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    &#9650;
+                                                </div>
+                                                <div class="row"> @item.likes</div>
+                                                <div class="row">
+                                                    &#9660;
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                @{
+                                    int markdownLen = item.description.Length;
+                                    int len = markdownLen > 250 ? 250 : markdownLen;
+                                    bool isLong = markdownLen > 250 ? true : false;
+                                }
+                                <p class="card-text">
+                                    <span>@Markdown.ParseHtmlString(item.description.Substring(0, len))</span>
+                                    @if (isLong)
+                                    {
+                                        <span><a asp-action="Details" asp-route-id="@item.articleId">View more...</a></span>
+                                    }
+                                </p>
+                            </div>
+                            <div class="ml-3 mb-3 text-right">
+                                <a class="btn btn-secondary rounded-pill badge-pill" asp-action="Edit" asp-route-id="@item.articleId">Edit</a>
+@*                                <a class="mr-3 btn btn-danger rounded-pill badge-pill" asp-action="Delete" asp-route-id="@item.articleId">Delete</a>*@
+
+                                <!-- Trigger the modal with a button -->
+                                <button type="button" class="mr-3 btn btn-danger rounded-pill badge-pill" data-toggle="modal" data-target="#myModal">Delete</button>
+
+                                <!-- Modal -->
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content text-left">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Are you sure to delete this article ?</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Title : @item.title</p>
+                                                <p>All comments associated with this article will be deleted.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form asp-action="DeleteConfirmed" method="post">
+                                                    <input type="hidden" name="id" id="id" value="@item.articleId" />
+                                                    <button type="submit" class="btn btn-danger text-white">Delete</button>
+                                                </form>
+                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="MyArticles"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       class="btn btn-light ml-3 rounded-pill @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="MyArticles"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn btn-light ml-3 rounded-pill @nextDisabled">
+        Next
+    </a>
 </div>
