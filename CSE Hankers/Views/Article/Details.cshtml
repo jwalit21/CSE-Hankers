@@ -5,6 +5,7 @@
     Article article = ViewBag.article;
     ApplicationUser author = ViewBag.author;
     ApplicationUser user = ViewBag.user;
+    Boolean isLiked = ViewBag.isLiked;
     IEnumerable<CSE_Hankers.Models.ArticleComment> comments = ViewBag.comments;
 }
 
@@ -17,7 +18,19 @@
                     @article.title
                 </div>
                 <div class="col-1 text-right">
-                    @article.likes <a asp-action="Like" asp-route-id="@article.articleId"><i class="fa fa-heart fa-2x" style="color:red;"></i></a>
+                    @article.likes
+                    @if (!isLiked)
+                    {
+                        <a asp-action="Like" asp-route-id="@article.articleId">
+                            <i class="fa fa-heart fa-2x" style="color:white;"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Dislike" asp-route-id="@article.articleId">
+                            <i class="fa fa-heart fa-2x" style="color:red;"></i>
+                        </a>
+                    }
                 </div>
             </div>
         </div>

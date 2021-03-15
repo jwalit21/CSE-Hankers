@@ -56,6 +56,13 @@ namespace CSE_Hankers.Models.SQLRepositories
             return alObject;
         }
 
+        public ArticleLikes removeLike(ArticleLikes like)
+        {
+            context.ArticleLikes.Remove(like);
+            context.SaveChanges();
+            return like;
+        }
+
         public Article RemoveArticleLikes(Article article)
         {
             var articleLikes = context.ArticleLikes.Where(u => u.article == article);

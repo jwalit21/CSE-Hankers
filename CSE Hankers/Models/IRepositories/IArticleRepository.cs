@@ -15,5 +15,6 @@ namespace CSE_Hankers.Models.IRepositories
         Article Delete(Article Article);
         Article RemoveArticleLikes(Article article);
         ArticleLikes giveLike(Article article, ApplicationUser user);
+        ArticleLikes removeLike(ArticleLikes like);
     }
 }

@@ -27,7 +27,7 @@
                                 bool isTitleLong = titleLen > 105 ? true : false;
                             }
                             <a asp-action="Profile" asp-controller="Account" asp-route-username="@item.author.UserName"><p class="text-muted text-right">- @item.author.name</p></a>
-                            <a asp-action="Profile" asp-controller="Account" asp-route-username="@item.author.UserName"><img src="~/Images/Profiles/@item.author.photoPath" class="rounded-circle" style="height: 50px; width:50x; margin-bottom: -10px; margin-right:10px;" /></a>
+                            <a asp-action="Profile" asp-controller="Account" asp-route-username="@item.author.UserName"><img src="~/Images/Profiles/@item.author.photoPath" class="rounded-circle" style="height: 50px; width:50px; margin-bottom: -10px; margin-right:10px;" /></a>
                         </div>
                         <div class="card-body">
                             @{
@@ -37,10 +37,10 @@
                             }
                             <p class="card-text mt-2">
                                 <div class="row">
-                                    <div class="col-10 h4">
+                                    <div class="col-10 h5">
                                         <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="text-dark">
-                                            <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="btn btn-dark rounded-pill">Title</a>
-                                            <br /><br />
+                                            <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;  font-size: 11px;" class="btn btn-dark rounded-pill mb-3">Title</a>
+                                            <br />
                                             @item.title
                                             @if (isTitleLong)
                                             {
@@ -61,9 +61,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-4">
-                                    <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="btn btn-dark rounded-pill">Content</a>
-                                    <br /><br />
+                                <div class="mt-1">
+@*                                    <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important; font-size: 11px;" class="btn btn-dark rounded-pill mb-3">Content</a>*@
+                                    <br />
                                     <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="text-dark">
                                         <span>@Markdown.ParseHtmlString(item.description.Substring(0, len))</span>
                                     </a>

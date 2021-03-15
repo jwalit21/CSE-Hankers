@@ -36,8 +36,8 @@
                             <p class="card-text mt-2">
                                 <div class="row">
                                     <div class="col-10 h4">
-                                        <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="btn btn-dark rounded-pill">Title</a>
-                                        <br /><br />
+                                        <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important; font-size: 11px;" class="btn btn-dark rounded-pill  mb-3">Title</a>
+                                        <br />
                                         <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="text-dark">
                                             @item.title 
                                             @if (isTitleLong)
@@ -59,9 +59,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-4">
-                                    <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="btn btn-dark rounded-pill">Content</a>
-                                    <br /><br />
+                                <div class="mt-1">
+@*                                    <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important; font-size: 11px;" class="btn btn-dark rounded-pill mb-3 font-weight-light">Content</a>*@
+                                    <br />
                                     <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="text-dark">
                                         <span>@Markdown.ParseHtmlString(item.description.Substring(0, len))</span>
                                     </a>

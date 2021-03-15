@@ -337,3 +337,5 @@ D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hanker
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.MvcApplicationPartsAssemblyInfo.cs
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.MvcApplicationPartsAssemblyInfo.cache
 D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\CSE Hankers.csprojAssemblyReference.cache
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\UserFollowing\users.cshtml.g.cs
+D:\Semester6\OOSE\Lab\CSE Hankers\CSE Hankers\obj\Debug\netcoreapp3.1\Razor\Views\UserFollowing\FollowedUsers.cshtml.g.cs

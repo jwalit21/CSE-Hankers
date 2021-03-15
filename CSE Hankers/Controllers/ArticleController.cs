@@ -164,6 +164,11 @@ namespace CSE_Hankers.Controllers
             }
             else
             {
+                var isLiked = true;
+                ArticleLikes al = context.ArticleLikes.Where(al => (al.article == article && al.author == user)).FirstOrDefault();
+                if (al == null)
+                    isLiked = false;   
+
                 if (signInManager.IsSignedIn(User))
                 {
                     if(article.author == user)
@@ -171,6 +176,7 @@ namespace CSE_Hankers.Controllers
                         ViewBag.user = user;
                         ViewBag.article = article;
                         ViewBag.comments = comments;
+                        ViewBag.isLiked = isLiked;
                         return View("ArticleDetails");
                     }
                 }
@@ -178,8 +184,7 @@ namespace CSE_Hankers.Controllers
                 ViewBag.user = user;
                 ViewBag.article = article;
                 ViewBag.comments = comments;
-                ViewBag.ErrorMessage = "Nooo";
-                TempData["ErrorMessage"] = "Article not found!";
+                ViewBag.isLiked = isLiked;
                 return View();
             }
         }
@@ -211,6 +216,37 @@ namespace CSE_Hankers.Controllers
                 }
 
                 TempData["ErrorMessage"] = "Article already liked!";
+                return RedirectToAction("Details", "Article", new { @id = article.articleId });
+            }
+        }
+
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Dislike(int id)
+        {
+            Article article = articleRepository.GetArticle(id);
+            var user = getLoggedUser();
+
+            if (article == null)
+            {
+                TempData["ErrorMessage"] = "Article not found!";
+                return View("404");
+            }
+            else
+            {
+                var obj = (context.ArticleLikes.Where(al => (al.article == article && al.author == user))).FirstOrDefault();
+                if (obj != null)
+                {
+                    var alObject = articleRepository.removeLike(obj);
+
+                    article.likes = article.likes - 1;
+                    articleRepository.Update(article);
+                    TempData["SuccessMessage"] = "Article Disliked!";
+                    return RedirectToAction("Details", "Article", new { @id = article.articleId });
+                }
+
+                TempData["ErrorMessage"] = "Article not liked yet!";
                 return RedirectToAction("Details", "Article", new { @id = article.articleId });
             }
         }

@@ -1,63 +1,10 @@
-﻿@*@model CSE_Hankers.Models.Article
-
-    @{
-        ViewData["Title"] = "ArticleDetails";
-    }
-
-    <div class="container mt-4 mb-4">
-        <a class="btn btn-outline-light" asp-action="Index">Back to List</a> | <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.articleId">Edit</a>
-        <div class="card mt-4" style="background-color: #e1e1e1;">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-11 h4 text-left">
-                        @Model.title
-                    </div>
-                    <div class="col-1 text-right">
-                        @Model.likes <a asp-action="Like" asp-route-id="@Model.articleId"><i class="fa fa-heart fa-2x"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-body text-dark" style="background-color: #f0f0f0">
-            <div class="text-right">- @Model.author.name</div>
-            <br />
-            @Markdown.ParseHtmlString(Model.description)
-        </div>
-    </div>
-
-
-    @section Scripts {
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $.ajax({
-                    type: "POST",
-                    dataType: "html",
-                    processData: false,
-                    url: "https://api.github.com/markdown/raw",
-                    data: "@Model.description",
-                    contentType: "text/plain",
-                    success: function (data) {
-                        console.log("success!");
-                        console.log(data);
-                        //$("#id1").html(data)
-                    },
-                    error: function (jqXHR, textStatus, error) {
-                        console.log(jqXHR, textStatus, error);
-                    }
-                });
-            });
-        </script>
-    }*@
-
-
-
-
-@model CSE_Hankers.Models.ArticleComment
+﻿@model CSE_Hankers.Models.ArticleComment
 
 @{
     ViewData["Title"] = "Details";
     Article article = ViewBag.article;
     ApplicationUser user = ViewBag.user;
+    Boolean isLiked = ViewBag.isLiked;
     IEnumerable<CSE_Hankers.Models.ArticleComment> comments = ViewBag.comments;
 }
 
@@ -70,7 +17,19 @@
                     @article.title
                 </div>
                 <div class="col-1 text-right">
-                    @article.likes <a asp-action="Like" asp-route-id="@article.articleId"><i class="fa fa-heart fa-2x" style="color:red;"></i></a>
+                    @article.likes
+                    @if (!isLiked)
+                    {
+                        <a asp-action="Dislike" asp-route-id="@article.articleId">
+                            <i class="fa fa-heart fa-2x" style="color:white;"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Like" asp-route-id="@article.articleId">
+                            <i class="fa fa-heart fa-2x" style="color:red;"></i>
+                        </a>
+                    }
                 </div>
             </div>
         </div>

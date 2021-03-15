@@ -43,52 +43,61 @@
 
                     @if (signInManager.IsSignedIn(User))
                     {
-                        <ul class="navbar-nav flex-grow-1">
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Users">Users</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ReportedContents">Reported Contents</a>
-                                </li>
-                                <li class="nav-item">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Users">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ReportedContents">Reported Contents</a>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-action="Logout" asp-controller="Account" method="post">
+                                    <button type="submit" class="nav-link text-dark">Update</button>
+                                    @*                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout"></a>*@
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="articleDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Articles
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="articleDropdown" style=" background-color: #e1e1e1;">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="">All Articles</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="MyArticles">My Articles</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="followDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Follow Users
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="followDropdown" style=" background-color: #e1e1e1;">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="">Follow Users</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="MyArticles">My Followed Users</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @User.Identity.Name
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style=" background-color: #e1e1e1;">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">Profile</a>
                                     <form asp-action="Logout" asp-controller="Account" method="post">
-                                        <button type="submit" class="nav-link text-dark">Update</button>
-                                        @*                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout"></a>*@
+                                        <button type="submit" class="text-dark btn">Logout</button>
                                     </form>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Home</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="articleDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Articles
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="articleDropdown" style=" background-color: #e1e1e1;">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="">All Articles</a>
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="MyArticles">My Articles</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        @User.Identity.Name
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style=" background-color: #e1e1e1;">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">Profile</a>
-                                        <form asp-action="Logout" asp-controller="Account" method="post">
-                                            <button type="submit" class="text-dark btn">Logout</button>
-                                        </form>
-                                    </div>
-                                </li>
-                            }
-                        </ul>
+                                </div>
+                            </li>
+                        }
+                    </ul>
                     }
                     else
                     {
