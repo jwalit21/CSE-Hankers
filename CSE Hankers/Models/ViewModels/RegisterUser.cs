@@ -12,7 +12,7 @@ namespace CSE_Hankers.Models.ViewModels
         public int id { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Name should be less than 100 characters.")]
+        [StringLength(25, ErrorMessage = "Name should be less than 25 characters.")]
         [Display(Name = "Full Name")]
         public string name { get; set; }
 

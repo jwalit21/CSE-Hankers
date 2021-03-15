@@ -59,21 +59,44 @@
                         <div class="row">
                             <div class="col-10">
                                 <div class="row">
-                                    <div class="col-2" style="padding-left:1em;">
-                                        <a class="" asp-action="Profile" asp-controller="Account" asp-route-username="@item.author.UserName"><img src="~/Images/Profiles/@item.author.photoPath" class="rounded-circle" style="height: 50px; width:50px;" /></a>
+                                    <div class="col-12" style="padding-left:1em;">
+                                        <a class="" asp-action="Profile" asp-controller="Account" asp-route-username="@item.author.UserName"><img src="~/Images/Profiles/@item.author.photoPath" class="rounded-circle" style="height: 30px; width:30px;" /><span class="text-dark">&nbsp;&nbsp;<b>@item.author.name</b></span></a>
                                     </div>
-                                    <div class="col-10 pl-5 border-left border-dark">
+                                    <div id="commentSection @item.articleCommentId" class="col-10 ml-5 border-left border-dark">
                                         @Html.DisplayFor(modelItem => item.comment)
+                                        @if (item.author == user)
+                                        {
+                                            <br />
+                                            <!-- asp-action="Edit" asp-controller="ArticleComment" asp-route-id="@item.articleCommentId"-->
+                                            <a onclick="Editbtnsubmit(this.id, '@item.comment');" class="mt-2 text-primary" id="submitBtn @item.articleCommentId" style="text-decoration:none;">Edit</a>
+                                        }
+                                    </div>
+                                    <div id="commentEdit @item.articleCommentId" class="edit-body col-10 pl-5 border-left border-dark">
+                                        <form asp-action="Edit" asp-controller="ArticleComment">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <input type="hidden" asp-for="articleCommentId" value="@item.articleCommentId" />
+                                            <div class="">
+                                                <div class="">
+                                                    <div class="form-group  mr-3">
+                                                        <textarea id="textAreaEdit @item.articleCommentId" asp-for="comment" class="form-control w-100" spellcheck="true" rows="2" cols="30"></textarea>
+                                                        <span asp-validation-for="comment" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <div class="form-group">
+                                                        <input type="submit" value="Post" class="btn btn-primary" />
+                                                        <a onclick="Cancelbtnsubmit(this.id);" id="cancelBtn @item.articleCommentId" class="btn btn-dark text-white">Cancel</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-2 mt-2">
-                                @if (item.author == user)
-                                {
-                                    <a asp-action="Edit" asp-controller="ArticleComment" asp-route-id="@item.articleCommentId" style="text-decoration:none;">Edit</a>
-                                }
+                            @*<div class="col-md-2 mt-2">
 
-                            </div>
+
+                            </div>*@
                         </div>
                      </div>
                 </div>
@@ -85,6 +108,7 @@
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
+            $(".edit-body").hide();
             $.ajax({
                 type: "POST",
                 dataType: "html",
@@ -102,5 +126,30 @@
                 }
             });
         });
+
+        function Editbtnsubmit(articleCommentID, comment) {
+            var editBtn = document.getElementById(articleCommentID);
+            var id = articleCommentID.substring(10);
+            console.log(id);
+            var commentSection = document.getElementById("commentSection " + id);
+            var commentEdit = document.getElementById("commentEdit " + id);
+            var textAreaEdit = document.getElementById("textAreaEdit " + id);
+            $(textAreaEdit).val(comment);
+            $(commentEdit).show();
+            $(commentSection).hide();
+            $(editBtn).hide();
+        }
+
+        function Cancelbtnsubmit(articleCommentID) {
+            var id = articleCommentID.substring(10);
+            var editBtn = document.getElementById("submitBtn " + id);
+            console.log(id);
+            var commentSection = document.getElementById("commentSection " + id);
+            var commentEdit = document.getElementById("commentEdit " + id);
+            $(commentEdit).hide();
+            $(commentSection).show();
+            $(editBtn).show();
+        }
+
     </script>
 }
