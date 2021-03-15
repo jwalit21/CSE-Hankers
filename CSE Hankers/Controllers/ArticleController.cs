@@ -150,6 +150,11 @@ namespace CSE_Hankers.Controllers
         public async Task<IActionResult> Details(int id)
         {
             Article article = articleRepository.GetArticle(id);
+            var comments = articleCommentRepository.GetComments(article);
+            foreach (var comment in comments)
+            {
+                comment.author = await userManager.FindByIdAsync(comment.authorId);
+            }
             var user = getLoggedUser();
 
             if (article == null)
@@ -163,11 +168,16 @@ namespace CSE_Hankers.Controllers
                 {
                     if(article.author == user)
                     {
-                        return View("ArticleDetails", article);
+                        ViewBag.article = article;
+                        ViewBag.comments = comments;
+                        return View("ArticleDetails");
                     }
                 }
                 ViewBag.author = await userManager.FindByIdAsync(article.authorId);
-                return View(article);
+                ViewBag.user = user;
+                ViewBag.article = article;
+                ViewBag.comments = comments;
+                return View();
             }
         }
 

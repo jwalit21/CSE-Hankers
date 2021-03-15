@@ -30,7 +30,7 @@ namespace CSE_Hankers.Models.SQLRepositories
 
         public IEnumerable<ArticleComment> GetComments(Article article)
         {
-            return context.ArticleComments.Where(p => p.article.articleId == article.articleId);
+            return context.ArticleComments.Where(p => p.article.articleId == article.articleId).ToList();
         }
 
         public Article RemoveCommentsOfArticle(Article article)

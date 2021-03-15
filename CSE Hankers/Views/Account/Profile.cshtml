@@ -6,50 +6,54 @@
     bool isOwnProfile = ViewBag.isOwnProfile;
 }
 
-<div class="container" style=" background-color: #e1e1e1;">
-    <h3>Profile</h3>
-    <div>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.id)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.id)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.name)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.name)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.email)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.email)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.mobile)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.mobile)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.organization)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.organization)
-            </dd>
-        </dl>
-        <img class="img-thumbnail" src="@photoPath" asp-append-version="true" />
-    </div>
-    <div>
-        @if(isOwnProfile)
+<div class="container mt-4">
+    <div class="">
+        @if (isOwnProfile)
         {
             <a class="btn btn-secondary rounded rounded-pill" asp-action="UpdateProfile" asp-route-id="@Model.id">Update Profile</a>
         }
         <a class="btn btn-outline-light rounded rounded-pill" asp-action="Index">Back to List</a>
     </div>
-
+    <div class="pb-4 mt-3" style=" background-color: #e1e1e1;">
+        <div class="ml-3 mr-3">
+            <div class="">
+                <br />
+                <h3>Profile</h3>
+            </div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.id)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.id)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.mobile)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.mobile)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.organization)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.organization)
+                </dd>
+            </dl>
+            <img class="img-thumbnail" src="@photoPath" asp-append-version="true" />
+        </div>
+    </div>
 </div>

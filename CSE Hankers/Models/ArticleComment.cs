@@ -18,7 +18,11 @@ namespace CSE_Hankers.Models
 
         public int likes { get; set; } = 0;
 
+        public int articleId { get; set; }
+
         public Article article { get; set; }
+
+        public string authorId { get; set; }
 
         public ApplicationUser author { get; set; }
     }

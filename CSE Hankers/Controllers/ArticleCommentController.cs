@@ -89,10 +89,12 @@ namespace CSE_Hankers.Controllers
                     return View("404");
                 }
 
-                articleComment.author = user; articleComment.likes = 0; articleComment.article = article;
+                articleComment.author = user; 
+                articleComment.likes = 0; 
+                articleComment.article = article;
                 articleCommentRepository.AddComment(articleComment);
                 TempData["SuccessMessage"] = "comment added Successfully!";
-                return RedirectToAction("Comments","ArticleComment",articleId);
+                return RedirectToAction("Details","Article", new { @id  = article.articleId });
             }
             return View(articleComment);
         }
@@ -120,10 +122,11 @@ namespace CSE_Hankers.Controllers
         [Authorize]
         public IActionResult Edit(ArticleComment articleComment)
         {
-            articleCommentRepository.Update(articleComment);
+            ArticleComment comment = articleCommentRepository.GetArticleComment(articleComment.articleCommentId);
+            comment.comment = articleComment.comment;
+            articleCommentRepository.Update(comment);
             TempData["SuccessMessage"] = "Comment Updated Successfully!";
-            var obj = articleCommentRepository.GetArticleComment(articleComment.articleCommentId);
-            return RedirectToAction("Comments", "ArticleComment",obj.article.articleId);
+            return RedirectToAction("Details", "Article", new { @id = comment.articleId });
         }
 
     }
