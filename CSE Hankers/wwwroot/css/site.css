@@ -25,11 +25,11 @@ a:visited {
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #0366d6;
+    color: #5d5c5c;
 }
 
 a:hover {
-    color: #4893e8;
+    color: #343333;
 }
 
 .btn-primary {
@@ -91,4 +91,8 @@ body {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
+}
+
+.border-bottom {
+    border-left: 2px solid #5b00a3;
 }

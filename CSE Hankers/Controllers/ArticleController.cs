@@ -62,6 +62,20 @@ namespace CSE_Hankers.Controllers
         }
 
         [Authorize]
+        public async Task<IActionResult> Users(string id, int? pageNumber)
+        {
+            IList<Article> articles = articleRepository.GetAllArticles().Where(art => art.authorId == id).ToList();
+            foreach (var article in articles)
+            {
+                article.author = await userManager.FindByIdAsync(article.authorId);
+            }
+            var user = getLoggedUser();
+            int pageSize = 5;
+
+            return View("Index",PaginatedList<Article>.CreateAsync(articles, pageNumber ?? 1, pageSize));
+        }
+
+        [Authorize]
         public async Task<IActionResult> MyArticles(int? pageNumber)
         {
             var user = getLoggedUser();

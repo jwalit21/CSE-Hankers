@@ -14,6 +14,8 @@
 
     <div class="container mt-2 mb-2 ">
 
+
+
         @foreach (var item in Model)
         {
             <div class="row mt-2 mb-3">
@@ -62,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-1">
-@*                                    <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important; font-size: 11px;" class="btn btn-dark rounded-pill mb-3">Content</a>*@
+                                    @*                                    <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important; font-size: 11px;" class="btn btn-dark rounded-pill mb-3">Content</a>*@
                                     <br />
                                     <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="text-dark">
                                         <span>@Markdown.ParseHtmlString(item.description.Substring(0, len))</span>

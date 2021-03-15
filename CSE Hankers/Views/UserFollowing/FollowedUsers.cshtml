@@ -4,26 +4,47 @@
     ViewData["Title"] = "FollowedUsers";
 }
 
-<h1>FollowedUsers</h1>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Name</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>@item.follower.UserName</td>
-            <td>@item.follower.name</td>
-            <td>
-                <a class="btn btn-danger rounded-pill" asp-action="Unfollow" asp-route-username="@item.follower.UserName">Unfollow</a> |
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container mt-4">
+    <a class="btn btn-outline-light rounded rounded-pill" asp-controller="UserFollowing" asp-action="Users">Back</a>
+    <div class="pb-4 mt-3 rounded" style=" background-color: #e1e1e1;">
+        <div class="ml-3 mr-3">
+            <div class="">
+                <br />
+                <h3>Followed Users</h3>
+            </div>
+            <hr />
+            <div>
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                <a style="text-decoration:none;" class="text-dark" asp-action="Profile" asp-controller="Account" asp-route-username="@item.follower.UserName">
+                                    @item.follower.UserName
+                                </a>
+                            </td>
+                            <td>
+                                <a style="text-decoration:none;" class="text-dark" asp-action="Profile" asp-controller="Account" asp-route-username="@item.follower.UserName">
+                                    @item.follower.name
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary rounded-pill " asp-controller="Article" asp-action="Users" asp-route-username="@item.follower.Id"><i class="fa fa-newspaper-o"></i></a>
+                                <a class="btn btn-danger rounded-pill" asp-action="Unfollow" asp-route-username="@item.follower.UserName">Unfollow</a> |
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

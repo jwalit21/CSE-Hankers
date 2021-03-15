@@ -65,7 +65,7 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="articleDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,8 +81,8 @@
                                     Follow Users
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="followDropdown" style=" background-color: #e1e1e1;">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="">Follow Users</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="MyArticles">My Followed Users</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="UserFollowing" asp-action="Users">Follow Users</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="UserFollowing" asp-action="Followed">My Followed Users</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">

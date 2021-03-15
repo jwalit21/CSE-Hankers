@@ -1,45 +1,66 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    int articles = ViewBag.articles;
+    Dictionary<ApplicationUser, int> userLikes = ViewBag.userLikes;
+    int userLikesCount = ViewBag.userLikesCount;
 }
-@*
-<div class="pt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5 mx-auto">
-                <div class="card shadow p-2 mb-2 mt-2 bg-white rounded">
-                    <div class="text-center bg-white pt-2 pb-2" style="font-size: 2em;">
-                        Login
-                    </div>
-                    <div class="card-body">
-                        <form id="submitForm" action="/login" method="post">
-                            <div class="form-group required">
-                                <label for="username">Username / Email</label>
-                                <input type="text" class="form-control text-lowercase" id="username" required="" name="username" value="">
-                            </div>
-                            <div class="form-group required">
-                                <label class="d-flex flex-row align-items-center" for="password">
-                                    Password
-                                    <a class="ml-auto border-link small-xl" href="/forget-password">Forget Password?</a>
-                                </label>
-                                <input type="password" class="form-control" required="" id="password" name="password" value="">
-                            </div>
-                            <div class="form-group mt-4 mb-4">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="remember-me" name="remember-me" data-parsley-multiple="remember-me">
-                                    <label class="custom-control-label" for="remember-me">Remember me?</label>
-                                </div>
-                            </div>
-                            <div class="form-group pt-1">
-                                <button class="btn btn-primary btn-block" type="submit">Log In</button>
-                            </div>
-                        </form>
-                        <p class="small-xl pt-3 text-center">
-                            <span class="text-muted">Not a member?</span>
-                            <a href="/signup">Sign up</a>
-                        </p>
-                    </div>
+
+<div class="container mt-4">
+    <div class="row ml-1">
+        <div class="col-sm-6">
+            <div class="card shadow my-2 border-bottom" style=" background-color: #e1e1e1;">
+                <div class="card-header">
+                    Articles <span class="text-dark font-weight-bold">&nbsp;@articles</span>
+                </div>
+                <div class="card-body text-dark">
+                    Total Articles Published by you
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-sm btn-dark text-light" asp-action="Create" asp-controller="Article">Publish New Article</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            @{
+                int count = 0;
+            }
+            <div class="card w-100 shadow my-2 border-bottom" style=" background-color: #e1e1e1;">
+                <div class="card-header">
+                    Most Liked Users
+                </div>
+                <div class="card-body text-dark">
+                    <table class="table table-striped pl-3 pr-3">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th class="pl-5">Article Likes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (KeyValuePair<ApplicationUser, int> kvp in userLikes)
+                            {
+                            @if (count > userLikesCount)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    count = count + 1;
+                                }
+
+                                <tr>
+                                    <td>
+                                        <a style="text-decoration:none;" class="text-dark" asp-action="Profile" asp-controller="Account" asp-route-username="@kvp.Key.UserName">
+                                            @kvp.Key.name
+                                        </a>
+                                    </td>
+                                    <td class="pl-5">@kvp.Value</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-</div>*@
+</div>
