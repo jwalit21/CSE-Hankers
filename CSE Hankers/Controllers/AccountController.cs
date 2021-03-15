@@ -152,8 +152,11 @@ namespace CSE_Hankers.Controllers
                 ApplicationUser applicationUser = userManager.Users.Where(u => u.UserName == username).FirstOrDefault();
                 if (applicationUser == null)
                     return RedirectToAction("404", "Account");
-                user = applicationUser;
+                
                 isOwnProfile = false;
+                if (applicationUser.Id == user.Id)
+                    isOwnProfile = true;
+                user = applicationUser;
             }
             ViewUser viewUser = new ViewUser()
             {

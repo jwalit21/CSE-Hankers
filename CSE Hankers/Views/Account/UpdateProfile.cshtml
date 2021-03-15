@@ -5,55 +5,70 @@
     var photoPath = "~/Images/Profiles/" + (Model.existingPhotoPath ?? "default.png");
 }
 
-<form asp-controller="Account" asp-action="UpdateProfile" enctype="multipart/form-data" method="post">
-    <div asp-validation-summary="All" class="text-danger">
+<div class="container mt-4">
+    <a class="btn btn-outline-light rounded-pill" asp-action="Profile" asp-controller="Account">Back</a>
+    <div style="background-color: #e1e1e1;" class="rounded mt-3">
+        <div class="ml-3 mr-3 pt-3">
+            <h4>Update Profile</h4>
+        </div>
+        <hr />
+        <form asp-controller="Account" asp-action="UpdateProfile" enctype="multipart/form-data" method="post" class="ml-3 mr-3">
+            <div asp-validation-summary="All" class="text-danger">
 
-    </div>
-    <input hidden asp-for="id" />
-    <input hidden asp-for="existingPhotoPath" />
-    <input hidden asp-for="email" />
-    <div class="form-group row">
-        <label asp-for="name" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="name" class="form-control" placeholder="Name" />
-            <span asp-validation-for="name" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="mobile" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="mobile" class="form-control" placeholder="Mobile number" />
-            <span asp-validation-for="mobile" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="organization" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="organization" class="form-control" placeholder="Organization" />
-            <span asp-validation-for="organization" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="photoPath" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <div class="custom-file">
-                <input asp-for="photoPath" class="custom-file-input form-control" placeholder="Photo" />
-                <label class="custom-file-label">Click here to change photo</label>
             </div>
-        </div>
-    </div>
+            <input hidden asp-for="id" />
+            <input hidden asp-for="existingPhotoPath" />
+            <input hidden asp-for="email" />
+            <div class="form-group row">
+                <label asp-for="name" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="name" class="form-control" placeholder="Name" />
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="email" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="email" disabled class="form-control" placeholder="email" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="mobile" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="mobile" class="form-control" placeholder="Mobile number" />
+                    <span asp-validation-for="mobile" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="organization" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="organization" class="form-control" placeholder="Organization" />
+                    <span asp-validation-for="organization" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="photoPath" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <div class="custom-file">
+                        <input asp-for="photoPath" class="custom-file-input form-control" placeholder="Photo" />
+                        <label class="custom-file-label">Click here to change photo</label>
+                    </div>
+                </div>
+            </div>
 
-    <div class="form-group row col-sm-4 offset-4">
-        <img class="img-thumbnail" src="@photoPath" asp-append-version="true" />
-    </div>
+            <div class="form-group row col-sm-4 offset-4">
+                <img class="img-thumbnail" src="@photoPath" asp-append-version="true" />
+            </div>
 
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a asp-action="Profile" asp-controller="Account" class="btn btn-primary">Cancel</a>
-        </div>
+            <div class="form-group row pb-3 mt-2">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="reset" class="btn btn-dark">Reset</button>
+                 </div>
+            </div>
+        </form>
     </div>
-</form>
+</div>
 
 @* required for displaying selected file name in the file box*@
 @section Scripts{

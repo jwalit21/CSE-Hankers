@@ -17,15 +17,15 @@
                     @article.title
                 </div>
                 <div class="col-1 text-right">
-                    @article.likes <a asp-action="Like" asp-route-id="@article.articleId"><i class="fa fa-heart fa-2x"></i></a>
+                    @article.likes <a asp-action="Like" asp-route-id="@article.articleId"><i class="fa fa-heart fa-2x" style="color:red;"></i></a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card-body text-dark" style="background-color: #f0f0f0">
-        <div class="text-right">- @article.author.name</div>
-        <br />
-        @Markdown.ParseHtmlString(article.description)
+        <div class="card-body text-dark" style="background-color: #f0f0f0">
+            <div class="text-right">- @article.author.name</div>
+            <br />
+            @Markdown.ParseHtmlString(article.description)
+        </div>
     </div>
 </div>
 

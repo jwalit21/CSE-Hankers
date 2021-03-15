@@ -1,40 +1,172 @@
-﻿@model CSE_Hankers.Models.Article
+﻿@*@model CSE_Hankers.Models.Article
 
-@{
-    ViewData["Title"] = "ArticleDetails";
-}
+    @{
+        ViewData["Title"] = "ArticleDetails";
+    }
 
-<div class="container mt-4 mb-4">
-    <a class="btn btn-outline-light" asp-action="Index">Back to List</a> | <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.articleId">Edit</a>
-    <div class="card mt-4" style="background-color: #e1e1e1;">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-11 h4 text-left">
-                    @Model.title
-                </div>
-                <div class="col-1 text-right">
-                    @Model.likes <a asp-action="Like" asp-route-id="@Model.articleId"><i class="fa fa-heart fa-2x"></i></a>
+    <div class="container mt-4 mb-4">
+        <a class="btn btn-outline-light" asp-action="Index">Back to List</a> | <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.articleId">Edit</a>
+        <div class="card mt-4" style="background-color: #e1e1e1;">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-11 h4 text-left">
+                        @Model.title
+                    </div>
+                    <div class="col-1 text-right">
+                        @Model.likes <a asp-action="Like" asp-route-id="@Model.articleId"><i class="fa fa-heart fa-2x"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="card-body text-dark" style="background-color: #f0f0f0">
+            <div class="text-right">- @Model.author.name</div>
+            <br />
+            @Markdown.ParseHtmlString(Model.description)
+        </div>
     </div>
-    <div class="card-body text-dark" style="background-color: #f0f0f0">
-        <div class="text-right">- @Model.author.name</div>
-        <br />
-        @Markdown.ParseHtmlString(Model.description)
+
+
+    @section Scripts {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "html",
+                    processData: false,
+                    url: "https://api.github.com/markdown/raw",
+                    data: "@Model.description",
+                    contentType: "text/plain",
+                    success: function (data) {
+                        console.log("success!");
+                        console.log(data);
+                        //$("#id1").html(data)
+                    },
+                    error: function (jqXHR, textStatus, error) {
+                        console.log(jqXHR, textStatus, error);
+                    }
+                });
+            });
+        </script>
+    }*@
+
+
+
+
+@model CSE_Hankers.Models.ArticleComment
+
+@{
+    ViewData["Title"] = "Details";
+    Article article = ViewBag.article;
+    ApplicationUser user = ViewBag.user;
+    IEnumerable<CSE_Hankers.Models.ArticleComment> comments = ViewBag.comments;
+}
+
+<div class="container mt-4 mb-4">
+    <a class="btn btn-outline-light" asp-action="Index">Back to List</a> | <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@article.articleId">Edit</a>
+    <div class="card mt-4" style=" background-color: #e1e1e1;">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-11 h4 text-left">
+                    @article.title
+                </div>
+                <div class="col-1 text-right">
+                    @article.likes <a asp-action="Like" asp-route-id="@article.articleId"><i class="fa fa-heart fa-2x" style="color:red;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body text-dark" style="background-color: #f0f0f0">
+            <div class="text-right">- @article.author.name</div>
+            <br />
+            @Markdown.ParseHtmlString(article.description)
+        </div>
     </div>
 </div>
 
+<div class="container mb-4">
+    <div class="card mt-2" style=" background-color: #e1e1e1;">
+        <h5 class="mt-3 ml-3">Comments</h5>
+        <div class="mt-3 ml-3">
+            <form asp-action="Create" asp-controller="ArticleComment">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="likes" value="@article.articleId" />
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="form-group  mr-3">
+                            <textarea asp-for="comment" class="form-control w-100" spellcheck="true" rows="3" cols="30"></textarea>
+                            <span asp-validation-for="comment" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <input type="submit" value="Post" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="mt-3 ml-1">
+            @foreach (var item in comments)
+            {
+                <div class="container-fluid">
+                    <div class="mb-4">
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-12" style="padding-left:1em;">
+                                        <a class="" asp-action="Profile" asp-controller="Account" asp-route-username="@item.author.UserName">
+                                            <img src="~/Images/Profiles/@item.author.photoPath" class="rounded-circle" style="height: 30px; width:30px;" />
+                                            <span class="text-dark">&nbsp;&nbsp;<b>@item.author.name</b></span>
+                                        </a>
+                                    </div>
+                                    <div id="commentSection @item.articleCommentId" class="col-10 ml-5 border-left border-dark">
+                                        @Html.DisplayFor(modelItem => item.comment)
+                                        @if (item.author == user)
+                                        {
+                                            <br />
+                                            <!-- asp-action="Edit" asp-controller="ArticleComment" asp-route-id="@item.articleCommentId"-->
+                                            <a onclick="Editbtnsubmit(this.id, '@item.comment');" class="mt-2 text-primary" id="submitBtn @item.articleCommentId" style="text-decoration:none;">Edit</a>
+                                        }
+                                    </div>
+                                    <div id="commentEdit @item.articleCommentId" class="edit-body col-10 pl-5 border-left border-dark">
+                                        <form asp-action="Edit" asp-controller="ArticleComment">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <input type="hidden" asp-for="articleCommentId" value="@item.articleCommentId" />
+                                            <div class="">
+                                                <div class="">
+                                                    <div class="form-group  mr-3">
+                                                        <textarea id="textAreaEdit @item.articleCommentId" asp-for="comment" class="form-control w-100" spellcheck="true" rows="2" cols="30"></textarea>
+                                                        <span asp-validation-for="comment" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <div class="form-group">
+                                                        <input type="submit" value="Post" class="btn btn-primary" />
+                                                        <a onclick="Cancelbtnsubmit(this.id);" id="cancelBtn @item.articleCommentId" class="btn btn-dark text-white">Cancel</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
+            $(".edit-body").hide();
             $.ajax({
                 type: "POST",
                 dataType: "html",
                 processData: false,
                 url: "https://api.github.com/markdown/raw",
-                data: "@Model.description",
+                data: "@article.description",
                 contentType: "text/plain",
                 success: function (data) {
                     console.log("success!");
@@ -46,5 +178,30 @@
                 }
             });
         });
+
+        function Editbtnsubmit(articleCommentID, comment) {
+            var editBtn = document.getElementById(articleCommentID);
+            var id = articleCommentID.substring(10);
+            console.log(id);
+            var commentSection = document.getElementById("commentSection " + id);
+            var commentEdit = document.getElementById("commentEdit " + id);
+            var textAreaEdit = document.getElementById("textAreaEdit " + id);
+            $(textAreaEdit).val(comment);
+            $(commentEdit).show();
+            $(commentSection).hide();
+            $(editBtn).hide();
+        }
+
+        function Cancelbtnsubmit(articleCommentID) {
+            var id = articleCommentID.substring(10);
+            var editBtn = document.getElementById("submitBtn " + id);
+            console.log(id);
+            var commentSection = document.getElementById("commentSection " + id);
+            var commentEdit = document.getElementById("commentEdit " + id);
+            $(commentEdit).hide();
+            $(commentSection).show();
+            $(editBtn).show();
+        }
+
     </script>
 }

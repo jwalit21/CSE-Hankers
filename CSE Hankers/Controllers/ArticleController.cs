@@ -168,6 +168,7 @@ namespace CSE_Hankers.Controllers
                 {
                     if(article.author == user)
                     {
+                        ViewBag.user = user;
                         ViewBag.article = article;
                         ViewBag.comments = comments;
                         return View("ArticleDetails");
@@ -177,6 +178,8 @@ namespace CSE_Hankers.Controllers
                 ViewBag.user = user;
                 ViewBag.article = article;
                 ViewBag.comments = comments;
+                ViewBag.ErrorMessage = "Nooo";
+                TempData["ErrorMessage"] = "Article not found!";
                 return View();
             }
         }
@@ -204,11 +207,11 @@ namespace CSE_Hankers.Controllers
                     article.likes = article.likes + 1;
                     articleRepository.Update(article);
                     TempData["SuccessMessage"] = "Article liked!";
-                    return RedirectToAction("Details", "Article");
+                    return RedirectToAction("Details", "Article", new { @id = article.articleId});
                 }
 
                 TempData["ErrorMessage"] = "Article already liked!";
-                return RedirectToAction("Details", "Article");
+                return RedirectToAction("Details", "Article", new { @id = article.articleId });
             }
         }
 
