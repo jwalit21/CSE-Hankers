@@ -11,6 +11,7 @@ namespace CSE_Hankers.Models
         [Key]
         public int userFollowingId { get; set; }
         public ApplicationUser user { get; set; }
+        public string followerId { get; set; }
         public ApplicationUser follower { get; set; }
 
     }

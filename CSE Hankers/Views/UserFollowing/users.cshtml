@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CSE_Hankers.Models.UserFollowing>
+﻿@model IEnumerable<CSE_Hankers.Models.ApplicationUser>
 
 @{
     ViewData["Title"] = "users";
@@ -6,24 +6,25 @@
 
 <h1>users</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<a asp-action="Followed" class="btn btn-success rounded-pill">Followed Users</a>
 <table class="table">
     <thead>
         <tr>
             <th></th>
+            <th>Username</th>
+            <th>Name</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
+            <td>@item.UserName</td>
+            <td>@item.name</td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.userFollowingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.userFollowingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.userFollowingId">Delete</a>
+                <a class="btn btn-success rounded-pill" asp-action="Follow" asp-route-username="@item.UserName">Follow</a> |
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

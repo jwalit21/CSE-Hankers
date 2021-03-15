@@ -6,22 +6,22 @@
 
 <h1>FollowedUsers</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
+            <th>Username</th>
+            <th>Name</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>@item.follower.UserName</td>
+            <td>@item.follower.name</td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.userFollowingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.userFollowingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.userFollowingId">Delete</a>
+                <a class="btn btn-danger rounded-pill" asp-action="Unfollow" asp-route-username="@item.follower.UserName">Unfollow</a> |
             </td>
         </tr>
 }

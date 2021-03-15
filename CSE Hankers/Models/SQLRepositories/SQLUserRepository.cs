@@ -14,6 +14,20 @@ namespace CSE_Hankers.Models.SQLRepositories
             this.context = context;
         }
 
+        public UserFollowing Follow(UserFollowing userFollowing)
+        {
+            context.UserFollowings.Add(userFollowing);
+            context.SaveChanges();
+            return userFollowing;
+        }
+
+        public UserFollowing Unfollow(UserFollowing userFollowing)
+        {
+            context.Remove(userFollowing);
+            context.SaveChanges();
+            return userFollowing;
+        }
+
         public ApplicationUser Update(ApplicationUser user)
         {
             var updatedUser = context.Users.Attach(user);
