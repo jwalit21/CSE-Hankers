@@ -23,6 +23,8 @@ namespace CSE_Hankers.Models
        
         public int likes { get; set; } = 0;
 
+        public DateTime timeStamp { get; set; } = DateTime.Now;
+
         public string authorId { get; set; }
         public ApplicationUser author { get; set; }
 

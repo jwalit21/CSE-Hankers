@@ -50,7 +50,7 @@ namespace CSE_Hankers.Controllers
         public async Task<IActionResult> Index(
                 int? pageNumber)
         {
-            IList<Article> articles = articleRepository.GetAllArticles();
+            IList<Article> articles = articleRepository.GetAllArticles().OrderBy(l => l.timeStamp).ToList();
             foreach (var article in articles)
             {
                 article.author = await userManager.FindByIdAsync(article.authorId);
@@ -64,7 +64,7 @@ namespace CSE_Hankers.Controllers
         [Authorize]
         public async Task<IActionResult> Users(string id, int? pageNumber)
         {
-            IList<Article> articles = articleRepository.GetAllArticles().Where(art => art.authorId == id).ToList();
+            IList<Article> articles = articleRepository.GetAllArticles().Where(art => art.authorId == id).OrderBy(l => l.timeStamp).ToList();
             foreach (var article in articles)
             {
                 article.author = await userManager.FindByIdAsync(article.authorId);
@@ -79,7 +79,7 @@ namespace CSE_Hankers.Controllers
         public async Task<IActionResult> MyArticles(int? pageNumber)
         {
             var user = getLoggedUser();
-            var articles = context.Articles.Where(a => a.author == user).ToList();
+            var articles = context.Articles.Where(a => a.author == user).OrderBy(l => l.timeStamp).ToList();
             foreach (var article in articles)
             {
                 article.author = await userManager.FindByIdAsync(article.authorId);
@@ -156,7 +156,7 @@ namespace CSE_Hankers.Controllers
             articleRepository.Delete(article);
 
             TempData["SuccessMessage"] = "Article Deleted Successfully!";
-            return RedirectToAction("Index", "Article");
+            return RedirectToAction("MyArticles", "Article");
         }
 
 

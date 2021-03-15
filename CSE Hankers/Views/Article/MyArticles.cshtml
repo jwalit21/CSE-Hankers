@@ -35,7 +35,7 @@
                             }
                             <p class="card-text mt-2">
                                 <div class="row">
-                                    <div class="col-10 h4">
+                                    <div class="col-9 h4">
                                         <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important; font-size: 11px;" class="btn btn-dark rounded-pill  mb-3">Title</a>
                                         <br />
                                         <a asp-action="Details" asp-route-id="@item.articleId" style="text-decoration:none !important;" class="text-dark">
@@ -46,16 +46,18 @@
                                             }
                                         </a>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="text-right mr-4">
                                             &nbsp;
                                         </div>
-                                        <div class="text-right mr-4">
+                                        @*<div class="text-right mr-4">
                                             &#9650;
-                                        </div>
-                                        <div class="text-right mr-4"> @item.likes</div>
-                                        <div class="text-right mr-4">
-                                            &#9660;
+                                        </div>*@
+                                        <div class="text-right mr-3">@item.likes <i class="fa fa-heart fa-lg" style="color:red;"></i></div>
+                                        <div class="text-right">
+                                            <span class="text-muted">
+                                                @item.timeStamp.Day-@item.timeStamp.Month-@item.timeStamp.Year
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -92,11 +94,11 @@
                                             <p>All comments associated with this article will be deleted.</p>
                                         </div>
                                         <div class="modal-footer">
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                                             <form asp-action="DeleteConfirmed" method="post">
                                                 <input type="hidden" name="id" id="id" value="@item.articleId" />
                                                 <button type="submit" class="btn btn-danger text-white">Delete</button>
                                             </form>
-                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
 
