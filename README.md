@@ -6,7 +6,7 @@
 ## Major Functionalities: 
 - Login, Register, Logout and Forgot Password 
 - Add, Update, Delete, View Posts/ Articles 
-- Like and Comment Posts/ Articles/ Answers
+- Like/ unlike and Comment Posts/ Articles/ Answers
 - Follow user 
 - Update profile
 - Add/ Update/ Delete/ View Questionnaires 
